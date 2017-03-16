@@ -1,12 +1,8 @@
 import tweepy
 import requests
 import os
-from collections import Counter
+from twitter_cred import *
 
-consumer_key = 'WRx45vHhqW7YohJfduo9wzGWs'
-consumer_secret = '9DffFFe5DWhuxE8SP5eQaw8L5aHXio4H9hmA4qT6B19uLG2LVj'
-access_token = '840574096136110080-oZlQUv9T1JXSirqiRhMoA7mN5RXMup3'
-access_token_secret = '79PnTXp2uX3i5EwqUNaOrr4DWHKNEHeiAMWH3cdTLJljC'
 
 def tweet(sent):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)

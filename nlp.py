@@ -1,6 +1,5 @@
 from nltk import word_tokenize
 from nltk import pos_tag
-import json
 import requests
 from pprint import pprint
 

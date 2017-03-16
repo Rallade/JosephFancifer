@@ -54,6 +54,7 @@ def make_tweet(original, fancy):
     imgflipjson = response.json()
     url = imgflipjson["data"]["url"]
 
+
     filename = 'temp.jpg'
     request = requests.get(url, stream=True)
     if request.status_code == 200:
@@ -62,6 +63,7 @@ def make_tweet(original, fancy):
                 image.write(chunk)
     else:
         print("Unable to download image")
+
 
     if len(original) <= 135:
         api.update_with_media(filename, status=original)

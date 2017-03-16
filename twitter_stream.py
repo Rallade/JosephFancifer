@@ -8,7 +8,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 for mentions in tweepy.Cursor(api.mentions_timeline).items():
-    print mentions.text
+    print(mentions.text)
 
 
 class TwitterStreamListener(tweepy.StreamListener):
@@ -17,9 +17,12 @@ class TwitterStreamListener(tweepy.StreamListener):
     """
 
     def on_status(self, status):
-        get_tweet(status)
+        #get_tweet(status)
         #get_user_informations(status)
-        setup_tweet(status)
+        try:
+            setup_tweet(status)
+        except:
+            print(status.text)
 
 
 # Twitter error list : https://dev.twitter.com/overview/api/response-codes
@@ -32,8 +35,12 @@ class TwitterStreamListener(tweepy.StreamListener):
 def setup_tweet(tweet):
     tweet_list = tweet.text.split()
     if tweet_list[0] == '@DucreuxFancy':
+        print(tweet.text[len('@DucreuxFancy')+1:])
         fancy = fancify(tweet.text[len('@DucreuxFancy')+1:])
-        make_tweet(str(tweet.text), fancy)
+        print(fancy)
+        print(str(tweet.text))
+        print("making tweet:")
+        make_tweet(str(tweet.text[len('@DucreuxFancy')+1:]), fancy)
 
 def get_user_informations(tweet):
     print("User ID \t:" + str(tweet.user.id))
